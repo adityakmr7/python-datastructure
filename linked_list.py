@@ -39,16 +39,39 @@ class LinkedList:
         prev_node.next = new_node
 
 
+    def delete_node(self, key):
+        cur_node = self.head
+        if cur_node and cur_node.data == key:
+            self.head = cur_node.next
+            cur_node = None
+            return 
+
+        prev = None
+        while cur_node and cur_node.data != key:
+            prev = cur_node
+            cur_node = cur_node.next
+        
+        if cur_node is None:
+            return 
+        prev.next = cur_node.next
+        cur_node = None
+
+
+
+
+
 
 llist = LinkedList()
-llist.append('A')
-llist.append('B')
-llist.append('C')
-llist.print_list()
-llist.prepend(1)
+llist.append("A")
+llist.append("B")
+llist.append("C")
+llist.append("D")
+
+llist.delete_node("B")
+if not (llist.delete_node("E")):
+    print("E not found in the linked list")
 
 llist.print_list()
-
 
 
 
