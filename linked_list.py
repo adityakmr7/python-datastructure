@@ -55,7 +55,28 @@ class LinkedList:
             return 
         prev.next = cur_node.next
         cur_node = None
+    
 
+    def delete_node_at_post(self, pos):
+        if self.head:
+            cur_node = self.head
+            if pos == 0:
+                self.head = cur_node.next
+                cur_node = None
+                return
+
+            prev = None
+            count = 0
+            while cur_node and count != pos:
+                prev = cur_node
+                cur_node = cur_node.next
+                count += 1
+
+            if cur_node is None:
+                return 
+
+            prev.next = cur_node.next
+            cur_node = None
 
 
 
@@ -67,14 +88,9 @@ llist.append("B")
 llist.append("C")
 llist.append("D")
 
-llist.delete_node("B")
-if not (llist.delete_node("E")):
-    print("E not found in the linked list")
+llist.delete_node_at_pos(0)
 
 llist.print_list()
-
-
-
 
 
 
